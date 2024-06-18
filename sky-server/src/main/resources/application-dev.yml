@@ -1,0 +1,30 @@
+sky:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: localhost
+    port: 3306
+    database: sky_take_out
+    username: root
+    password: 123456
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    database: 10
+  alioss:
+    endpoint: oss-cn-huhehaote.aliyuncs.com
+    access-key-id: LTAI5tFNfmJdZYxBGCD5kFhX
+    access-key-secret: oSpQvDH5nOJ1zBzBz1f5TyctXiRwaA
+    bucket-name: gourmet-swift
+  wechat:
+    appid: wx9dcc849883f2e060
+    secret: db4c5d9e52b01e994d875ca214ee1f81
+    mchid: 1561414331
+    mchSerialNo: 4B3B3DC35414AD50B1B755BAF8DE9CC7CF407606
+    privateKeyFilePath: D:\pay\apiclient_key.pem
+    #    这个文件没有
+    apiV3Key: CZBK51236435wxpay435434323FFDuv3
+    weChatPayCertFilePath: D:\pay\wechatpay_166D96F876F45C7D07CE98952A96EC980368ACFC.pem
+    #    这个文件我也没有，所以做不了
+    notifyUrl: https://340c9a8a.r19.cpolar.top/notify/paySuccess
+    refundNotifyUrl: https://340c9a8a.r19.cpolar.top/notify/refundSuccess

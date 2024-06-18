@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.mapper.EmployeeMapper">
+    <!--# 这里是根据 员工名字模糊分页查询，所以有了name不等于空的判断-->
+    <!--# test那里是指那个字段不为空且不为空串时,则拼接下面那条语句,where标签会自动识别抹掉"and"-->
+    <!--# 这里不需要写limit了，插件提供了-->
+    <!--# 注意test不要有空格-->
+    <!--select标签里面写注释会报错......-->
+    <select id="pageQuery" resultType="com.sky.entity.Employee">
+        select * from employee
+        <where>
+            <if test="name != null and name != ''">
+                and name like concat('%',#{name},'%')
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
+    <!--可以写别名Employee，而不用完整的写动态类名-->
+    <!--这种事动态SQL了，更加灵活-->
+    <update id="update" parameterType="Employee">
+        update employee
+        <set>
+            <if test="name != null">name=#{name},</if>
+            <if test="username != null">username=#{username},</if>
+            <if test="password != null">password=#{password},</if>
+            <if test="phone != null">phone=#{phone},</if>
+            <if test="sex != null">sex=#{sex},</if>
+            <if test="idNumber != null">id_number=#{idNumber},</if>
+            <if test="status != null">status=#{status},</if>
+            <if test="createTime != null">create_time=#{createTime},</if>
+            <if test="updateUser != null">update_user=#{updateUser},</if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>
